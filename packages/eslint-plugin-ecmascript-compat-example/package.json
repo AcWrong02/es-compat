@@ -2,11 +2,16 @@
   "name": "eslint-plugin-ecmascript-compat-example",
   "private": true,
   "scripts": {
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "support": "node src/index.js"
   },
   "devDependencies": {
     "eslint": "^8.56.0",
     "eslint-plugin-ecmascript-compat": "^3.2.1"
   },
-  "version": "3.2.1"
+  "version": "3.2.1",
+  "dependencies": {
+    "@mdn/browser-compat-data": "^5.6.18",
+    "chalk": "^4.1.2"
+  }
 }
