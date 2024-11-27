@@ -144,6 +144,7 @@ foo(bar,);
  * ES2016
  */
 foo.includes();
+console.log([123].includes(1));
 Array.prototype.includes;
 
 foo ** bar;
