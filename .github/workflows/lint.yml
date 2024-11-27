@@ -2,12 +2,10 @@ name: Lint JavaScript Files
 
 on:
   push:
-    paths:
-      - 'packages/eslint-plugin-ecmascript-compat-example/src/**/*.{js,jsx}'
+    branches:
+      - 'master'
   pull_request:
-    paths:
-      branches:
-        - '**'
+    types: [opened, synchronize, reopened]
 
 jobs:
   lint:
