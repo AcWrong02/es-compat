@@ -30,7 +30,7 @@ jobs:
       # Step 4: Generate .lint.files based on Git changes
       - name: Generate .lint.files
         run: |
-          git diff --name-only HEAD^ HEAD | grep '^packages/eslint-plugin-ecmascript-compat-example/src/.*\.\(js\|jsx\)$' > .lint.files
+          git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '^packages/eslint-plugin-ecmascript-compat-example/src/.*\.\(js\|jsx\)$' > .lint.files
 
       # Step 5: Run the lint script
       - name: Run Lint Script
