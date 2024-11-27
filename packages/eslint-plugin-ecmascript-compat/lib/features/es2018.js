@@ -14,6 +14,7 @@ export default [
       compatData.javascript.functions.method_definitions.async_generator_methods,
     ],
   },
+  // 解构运算符：https://eslint-community.github.io/eslint-plugin-es-x/rules/no-rest-spread-properties.html
   {
     ruleConfig: { definition: esPlugin.rules['no-rest-spread-properties'] },
     compatFeatures: [
@@ -21,6 +22,7 @@ export default [
       compatData.javascript.operators.spread.spread_in_object_literals,
     ],
   },
+  // 已polifill
   {
     ruleConfig: {
       definition: coreRules.get('no-restricted-syntax'),
@@ -29,6 +31,7 @@ export default [
     compatFeatures: [compatData.javascript.builtins.Promise.finally],
     polyfill: 'Promise.prototype.finally',
   },
+  // 已polifill
   {
     ruleConfig: { definition: esPlugin.rules['no-regexp-lookbehind-assertions'] },
     compatFeatures: [compatData.javascript.regular_expressions.lookbehind_assertion],

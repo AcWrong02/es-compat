@@ -21,10 +21,12 @@ export default [
     },
     compatFeatures: [compatData.javascript.builtins.Atomics.wait],
   },
+  // can pass
   {
     ruleConfig: { definition: esPlugin.rules['no-bigint'] },
     compatFeatures: [compatData.javascript.builtins.BigInt],
   },
+  // can pass
   {
     ruleConfig: { definition: esPlugin.rules['no-dynamic-import'] },
     compatFeatures: [compatData.javascript.operators.import],
@@ -46,10 +48,12 @@ export default [
     ruleConfig: { definition: esPlugin.rules['no-nullish-coalescing-operators'] },
     compatFeatures: [compatData.javascript.operators.nullish_coalescing],
   },
+  // can pass
   {
     ruleConfig: { definition: esPlugin.rules['no-optional-chaining'] },
     compatFeatures: [compatData.javascript.operators.optional_chaining],
   },
+  // can pass
   {
     // Rule requires the ES6 global, Promise
     ruleConfig: { definition: esPlugin.rules['no-promise-all-settled'] },

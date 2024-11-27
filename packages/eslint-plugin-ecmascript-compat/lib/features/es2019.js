@@ -32,6 +32,7 @@ export default [
     compatFeatures: [compatData.javascript.builtins.Object.fromEntries],
     polyfill: 'Object.fromEntries',
   },
+  // can pass, see https://github.com/mysticatea/eslint-plugin-es/blob/master/docs/rules/no-optional-catch-binding.md
   {
     ruleConfig: { definition: esPlugin.rules['no-optional-catch-binding'] },
     compatFeatures: [compatData.javascript.statements.try_catch.optional_catch_binding],

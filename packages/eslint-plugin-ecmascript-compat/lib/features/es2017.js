@@ -7,6 +7,7 @@ import { noRestrictedSyntaxPrototypeMethod } from './ruleOptionsUtil.js';
 const coreRules = new eslint.Linter().getRules();
 
 export default [
+  // can pass
   {
     ruleConfig: { definition: esPlugin.rules['no-async-functions'] },
     compatFeatures: [
@@ -19,16 +20,19 @@ export default [
     ruleConfig: { definition: esPlugin.rules['no-atomics'] },
     compatFeatures: [compatData.javascript.builtins.Atomics],
   },
+  // can pass
   {
     ruleConfig: { definition: esPlugin.rules['no-object-getownpropertydescriptors'] },
     compatFeatures: [compatData.javascript.builtins.Object.getOwnPropertyDescriptors],
     polyfill: 'Object.getOwnPropertyDescriptors',
   },
+  // can pass
   {
     ruleConfig: { definition: esPlugin.rules['no-object-entries'] },
     compatFeatures: [compatData.javascript.builtins.Object.entries],
     polyfill: 'Object.entries',
   },
+  // can pass
   {
     ruleConfig: { definition: esPlugin.rules['no-object-values'] },
     compatFeatures: [compatData.javascript.builtins.Object.values],
@@ -55,6 +59,7 @@ export default [
     compatFeatures: [compatData.javascript.builtins.String.padEnd],
     polyfill: 'String.prototype.padEnd',
   },
+  // https://eslint-community.github.io/eslint-plugin-es-x/rules/no-trailing-function-commas.html
   {
     ruleConfig: { definition: esPlugin.rules['no-trailing-function-commas'] },
     compatFeatures: [

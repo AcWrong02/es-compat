@@ -3,6 +3,7 @@ import compatData from '@mdn/browser-compat-data/forLegacyNode';
 import esPlugin from 'eslint-plugin-es-x';
 
 export default [
+  // Array.at can pass
   {
     ruleConfig: {
       definition: esPlugin.rules['no-array-string-prototype-at'],

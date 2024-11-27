@@ -33,12 +33,17 @@ export default function targetRuntimes(overrideBrowserslist, browserslistOptions
   return Object.entries(final).map(([name, version]) => ({ name, version }));
 }
 
+// 检查运行时名称是否存在于 MDN 的兼容性数据中
 function isKnownFamily(name) {
   return compatData.browsers[name] != null;
 }
 
 // browserslist -> @mdn/browser-compat-data (where necessary and available)
 /* eslint-disable camelcase */
+// 将 browserslist 名称映射到 MDN 数据的标准名称，确保兼容性数据可用
+// 映射示例：
+// and_chr → chrome_android
+// ios_saf → safari_ios
 const familyNameMapping = {
   and_chr: 'chrome_android',
   and_ff: 'firefox_android',

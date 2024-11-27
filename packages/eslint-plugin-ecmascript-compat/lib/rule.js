@@ -59,17 +59,27 @@ export default {
     ],
   },
   create(context) {
+    // 提取用户配置
     const overrideBrowserslist = context.options?.[0]?.overrideBrowserslist;
     const browserslistOptions = context.options?.[0]?.browserslistOptions;
+    // 解析目标运行时, 计算用户的目标运行时环境（如某些浏览器版本或 Node.js 版本）
     const targets = targetRuntimes(overrideBrowserslist, browserslistOptions);
+    // 获取不支持的特性
     const unsupportedFeatures = compatibility.unsupportedFeatures(features, targets);
-
+    // 处理 polyfills
+    // 提取用户指定的 polyfills 列表
+    // 如果某个特性出现在 polyfills 中，即使目标运行时不支持，也不会报告错误
     const polyfills = context.options?.[0]?.polyfills ?? [];
-
+    // 创建访问器
+    // 1.过滤：
+    //  (1)忽略那些已经通过 polyfills 处理的不兼容特性
+    // 2.创建访问器：
+    //  (1)每个不兼容的特性都定义了自己的规则配置（feature.ruleConfig）。
+    //  (2)调用 createDelegatee，为每个规则生成特定的访问器。
     const visitors = unsupportedFeatures
       .filter((feature) => !polyfills.includes(feature.polyfill))
       .map((feature) => createDelegatee(feature.ruleConfig, context));
-
+    // 返回代理访问器
     return delegatingVisitor(visitors);
   },
 };
