@@ -30,7 +30,9 @@ jobs:
       # Step 4: Generate .lint.files based on Git changes
       - name: Generate .lint.files
         run: |
-          git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '^packages/eslint-plugin-ecmascript-compat-example/src/.*\.\(js\|jsx\)$' > .lint.files
+          # 列出 test 目录下所有的 .js 和 .jsx 文件并保存到 .lint.files
+          find packages/eslint-plugin-ecmascript-compat-example/src/test -name "*.js" -o -name "*.jsx" > .lint.files
+          cat .lint.files # 打印出 .lint.files 以供调试
 
       # Step 5: Run the lint script
       - name: Run Lint Script
