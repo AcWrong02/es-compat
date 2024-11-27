@@ -1,0 +1,43 @@
+name: Lint JavaScript Files
+
+on:
+  push:
+    paths:
+      - 'packages/eslint-plugin-ecmascript-compat-example/src/**/*.{js,jsx}'
+  pull_request:
+    paths:
+      - 'packages/eslint-plugin-ecmascript-compat-example/src/**/*.{js,jsx}'
+
+jobs:
+  lint:
+    name: Run Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' # or specify the version your project requires
+
+      # Step 3: Install dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Step 4: Generate .lint.files based on Git changes
+      - name: Generate .lint.files
+        run: |
+          git diff --name-only HEAD^ HEAD | grep '^packages/eslint-plugin-ecmascript-compat-example/src/.*\.\(js\|jsx\)$' > .lint.files
+
+      # Step 5: Run the lint script
+      - name: Run Lint Script
+        run: |
+          if [ -s .lint.files ]; then
+            node ./scripts/lint-ecmascript.js eslint --no-error-on-unmatched-pattern $(cat .lint.files)
+          else
+            echo "No JavaScript files changed, skipping linting."
+          fi
