@@ -3,4 +3,8 @@
 #
 
 # Supports no ES2016 features
+[production]
+Chrome >= 47
+
+[dbsheet]
 Chrome >= 46
