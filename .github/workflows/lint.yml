@@ -6,7 +6,8 @@ on:
       - 'packages/eslint-plugin-ecmascript-compat-example/src/**/*.{js,jsx}'
   pull_request:
     paths:
-      - 'packages/eslint-plugin-ecmascript-compat-example/src/**/*.{js,jsx}'
+      branches:
+        - '**'
 
 jobs:
   lint:
